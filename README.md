@@ -55,8 +55,10 @@ class CreateBirds < ActiveRecord::Migration[5.2]
 end
 ```
 
-Then run `rails db:migrate` to create the schema. We set this up first because we quickly move away from working directly with the database. Instead, with Rails, we want to create a model to represent and manipulate the
-data. Create the following `Bird` model in `app/models/bird.rb`:
+Then run `rails db:migrate` to create the schema. We set this up first because
+we quickly move away from working directly with the database. Instead, with
+Rails, we want to create a model to represent and manipulate the data. Create
+the following `Bird` model in `app/models/bird.rb`:
 
 ```ruby
 class Bird < ApplicationRecord
@@ -68,7 +70,11 @@ end
 > Relational Map. Because of this, we gain many useful methods like `all` and
 > `save` without having to include any additional methods.
 
-With a model and the database set up, we can add a little data to help us visualize in later parts. Some seed data is provided in `db/seeds.rb`, just run `rails db:seed` and it should create four `Bird` records. You can always check these by running `rails c` to jump into the Rails console, then use the `all` class method on `Bird` to confirm these instances are appearing.
+With a model and the database set up, we can add a little data to help display
+our view later. Some seed data is provided in `db/seeds.rb`; just run `rails
+db:seed` and it should create four `Bird` records. You can always check these by
+running `rails c` to jump into the Rails console, then use `Bird.all` to confirm
+these instances are appearing.
 
 Now we can configure a route and corresponding controller method. To keep things
 simple, We'll just set up a basic `index` action with a route:
@@ -94,12 +100,14 @@ Any visitors to `'/birds'` will get routed to the `index` action in the
 model and store them in a variable, `@birds`. Now the controller and model are
 set up to work together.
 
-Rails favors convention over configuration. For this reason, if a folder and
-file are present in the 'views' folder that corresponds to a controller and
-action listed on a route, Rails will display that view for us by default. In our
-example, we have a route pointed to `'birds#index'`. In `app/views`, we also
-have a `/birds` folder containing a file `index.html.erb`. Rails recognizes this
-as a match and so implicitly renders `index.html.erb`. This is the same as writing:
+Rails favors convention over configuration. For this reason, if a **_folder_**
+and **_file_** are present in the **_views_** folder that correspond to a
+**_controller_** and **_action_** listed on a **_route_**, Rails will display
+that **_view_** for by default. 
+
+In our example, we have a route pointed to `'birds#index'`. In `app/views`, we
+_also_ have a `/birds` folder containing `index.html.erb`. Rails recognizes this
+as a match and so implicitly renders this file. This is the same as writing:
 
 ```ruby
 class BirdsController < ApplicationController
@@ -110,14 +118,29 @@ class BirdsController < ApplicationController
 end
 ```
 
+The provided `birds/index.html.erb` file contains code that will list out each
+bird's name and species in an unordered list:
+
+```html
+<h1>Birds</h1>
+
+<ul>
+<% @birds.each do |bird| %>
+    <li><%= bird.name %> - <%= bird.species %></li>
+<% end %>
+</ul>
+```
+
+## Conclusion
+
 We will revisit `render` in the next lesson. As it is currently configured, we
 already have a Rails app up and running using the MVC structure! If you run
 `rails s` and visit the `'/birds'` path, you should see a list of birds.
 
-## Conclusion
-
-With minimal work, as we just saw, we were able to spin up a resource backed by a database and serve it up in a browser. In short, when a visitor goes to `'/birds'` on
-this Rails app, the controller retrieves data from the `Bird` model and then serves that data to the visitor by displaying it in a view. 
+With minimal work, as we just saw, we were able to spin up a resource backed by
+a database and serve it up in a browser. In short, when a visitor goes to
+`'/birds'` on this Rails app, the controller retrieves data from the `Bird`
+model and then serves that data to the visitor by displaying it in a view. 
 
 So where does JavaScript fit in? Well, we have the skills to build out our own
 frontends. As we will see in the next lesson, rather than using the ERB view,
