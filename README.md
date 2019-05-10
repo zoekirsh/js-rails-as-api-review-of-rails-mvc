@@ -84,8 +84,8 @@ And a controller:
 ```ruby
 class BirdsController < ApplicationController
   def index
-		@birds = Bird.all
-	end
+    @birds = Bird.all
+  end
 end
 ```
 
@@ -106,7 +106,7 @@ class BirdsController < ApplicationController
   def index
     @birds = Bird.all
     render 'birds/index.html.erb'
-	end
+  end
 end
 ```
 
