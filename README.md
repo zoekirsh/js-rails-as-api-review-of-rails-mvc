@@ -149,8 +149,8 @@ JavaScript and `fetch()`.
 
 ## Resources
 
-[ActiveRecord Basics][activerecord]
-[Layouts and Rendering in Rails][layouts]
+- [ActiveRecord Basics][activerecord]
+- [Layouts and Rendering in Rails][layouts]
 
 [activerecord]: https://guides.rubyonrails.org/active_record_basics.html
 [layouts]: https://guides.rubyonrails.org/v5.2/layouts_and_rendering.html
