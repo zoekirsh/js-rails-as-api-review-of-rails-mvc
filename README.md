@@ -144,7 +144,7 @@ model and then serves that data to the visitor by displaying it in a view.
 
 So where does JavaScript fit in? Well, we have the skills to build out our own
 frontends. As we will see in the next lesson, rather than using the ERB view,
-Rails is flexible enough to give us something we can us with directly with
+Rails is flexible enough to give us something we can use with
 JavaScript and `fetch()`.
 
 ## Resources
